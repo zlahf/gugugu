@@ -2,6 +2,7 @@ import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from 
 import {ModalController, NavParams} from "@ionic/angular";
 import {Service} from "../home.page";
 import * as Moment from 'moment';
+import {HomeService} from "../home.service";
 
 @Component({
     selector: 'app-service-info',
@@ -16,7 +17,8 @@ export class ServiceInfoComponent implements OnInit {
     useAlam = false;
 
     constructor(public modalController: ModalController,
-                public navParams: NavParams) {
+                public navParams: NavParams,
+                public homeService: HomeService) {
     }
 
     ngOnInit() {
@@ -32,5 +34,10 @@ export class ServiceInfoComponent implements OnInit {
         this.modalController.dismiss({
             'dismissed': true
         });
+    }
+
+    unSubscribeService(){
+      this.homeService.fireUnscribeService(this.service);
+      this.dismiss();
     }
 }

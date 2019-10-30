@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import * as Moment from 'moment';
 import {ModalController} from "@ionic/angular";
 import {ServiceInfoComponent} from "./service-info/service-info.component";
+import {HomeService} from "./home.service";
+import {Subscription} from "rxjs";
 
 export interface Service {
     id: string;
@@ -19,7 +21,7 @@ export interface Service {
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnDestroy{
 
     subscribeServices: Array<Service> = [
         {
@@ -45,7 +47,10 @@ export class HomePage {
         // {id: 'youtube', iconName: 'Y', name: '유튜브 프리미엄', startDate: '20191011', endDate: null}
     ];
 
-    constructor(public modalController: ModalController) {
+    sub: Subscription;
+
+    constructor(public modalController: ModalController,
+                public homeService: HomeService) {
         this.subscribeServices.forEach((service: Service) => {
             let st = Moment(service.startDate);
             let ed = Moment(st).add(1, 'months');
@@ -55,6 +60,14 @@ export class HomePage {
             service.leftPercent = service.leftDate / 30;
             console.log(service.leftPercent);
         });
+
+        this.sub = this.homeService.unSubscribeService$.subscribe((service: Service) => {
+
+            this.subscribeServices = this.subscribeServices.filter((f: Service) => {
+                return f.id !== service.id;
+            });
+        });
+
     }
 
     async presentModal(service: Service) {
@@ -67,4 +80,7 @@ export class HomePage {
         return await modal.present();
     }
 
+    ngOnDestroy(): void {
+        if (this.sub) this.sub.unsubscribe();
+    }
 }
