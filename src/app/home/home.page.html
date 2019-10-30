@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="gugu-header-title">
+      안녕하세요.<br>GUGU입니다!
+  </div>
+  <div class="gugu-content-title">
+    이용중인 서비스
+  </div>
+  <ion-card *ngFor="let service of subscribeServices" (click)="presentModal(service)">
+    <ion-card-content>
+      <div class="service-layout">
+        <div class="service-avatar">
+          <div class="avatar-image">{{service.iconName}}</div>
+        </div>
+        <div class="service-small-info">
+          <div>{{service.name}}</div>
+          <div>
+            <ion-progress-bar color="dark" [value]="service.leftPercent"></ion-progress-bar>
+            <div class="service-left-day">{{service.leftDate}}일 남음</div>
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

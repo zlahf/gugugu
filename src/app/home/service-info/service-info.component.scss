@@ -1,0 +1,116 @@
+.gugu-header-title {
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .avatar-image {
+      width: 5vh;
+      height: 5vh;
+      border-radius: 100%;
+      background: darkred;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .avatar-title{
+      margin-top: 10px;
+      line-height: 1.2rem;
+    }
+  }
+
+  .service-name{
+    font-size: 1.4rem;
+  }
+
+  .next-pay-day {
+    font-size: 0.8rem;
+    font-weight: normal;
+  }
+}
+
+ion-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  ion-card-content {
+    padding: 3px 20px;
+  }
+}
+
+.subscribe-info{
+  .line-subscribe-info{
+    height: 7vh;
+    line-height: 7vh;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    display: flex;
+    > div {
+      flex: 1;
+      &:first-child{
+        text-align: left;
+        font-size: 0.8rem;
+        color: #666;
+      }
+      &:last-child{
+        text-align: right;
+        font-weight: bold;
+        color: #555;
+        font-size: 0.9rem;
+      }
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.gugu-custom-card{
+  padding: 10px 16px;
+  >div {
+    display: flex;
+    line-height: 7vh;
+    width: 100%;
+    border-radius: 10px;
+    background: #eee;
+    overflow: hidden;
+    padding: 0 20px;
+    > div{
+      flex: 1;
+      height: 7vh;
+      font-size: 0.8rem;
+      color: #666;
+      &:first-child{
+        text-align: left;
+      }
+      &:last-child {
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .text-align-center{
+    justify-content: center !important;
+    font-weight: bold;
+    color: white !important;
+    font-size: 1.1rem !important;
+  }
+  &.bg-dark {
+    >div {
+      background-color: rgb(34, 36, 40);
+    }
+  }
+}
+
+.seperate-from-top{
+  margin-top: 4vh;
+}
+

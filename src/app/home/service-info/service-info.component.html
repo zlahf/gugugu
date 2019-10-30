@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div (click)="dismiss()"><</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="gugu-header-title">
+    <div>
+      <div class="avatar-image">{{service.iconName}}</div>
+      <div class="avatar-title">
+        <span class="service-name">{{service.name}}</span><br>
+        <span class="next-pay-day">{{formattedLeftDay}} 재결제</span>
+      </div>
+    </div>
+  </div>
+  <div class="gugu-content-title">
+    상세정보
+  </div>
+  <ion-card>
+    <ion-card-content class="subscribe-info">
+      <div class="line-subscribe-info">
+        <div>서비스명</div>
+        <div>{{service.subscribeModel}}</div>
+      </div>
+      <div class="line-subscribe-info">
+        <div>첫결제일</div>
+        <div>{{startDate}}</div>
+      </div>
+      <div class="line-subscribe-info">
+        <div>결제금액</div>
+        <div>{{6800|number:'1.0-0'}}원</div>
+      </div>
+      <div class="line-subscribe-info">
+        <div>결제주기</div>
+        <div>30일</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="gugu-content-title seperate-from-top">
+    상세정보
+  </div>
+
+  <div class="gugu-custom-card">
+    <div>
+      <div>재결제 하루 전 알림 허용</div>
+      <div>
+        <ion-toggle [(ngModel)]="useAlam" color="danger"></ion-toggle>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="gugu-custom-card bg-dark">
+      <div>
+        <div class="text-align-center">구독해지</div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
