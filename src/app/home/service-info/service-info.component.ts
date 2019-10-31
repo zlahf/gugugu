@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {ModalController, NavParams} from "@ionic/angular";
+import {AlertController, ModalController, NavParams} from "@ionic/angular";
 import {Service} from "../home.page";
 import * as Moment from 'moment';
 import {HomeService} from "../home.service";
@@ -17,6 +17,7 @@ export class ServiceInfoComponent implements OnInit {
     useAlam = false;
 
     constructor(public modalController: ModalController,
+                public alertController: AlertController,
                 public navParams: NavParams,
                 public homeService: HomeService) {
     }
@@ -38,6 +39,30 @@ export class ServiceInfoComponent implements OnInit {
 
     unSubscribeService(){
       this.homeService.fireUnscribeService(this.service);
-      this.dismiss();
+    }
+
+    async presentAlertConfirm(service: Service) {
+        const alert = await this.alertController.create({
+            header: '확인',
+            message: `${service.subscribeModel} 구독을 취소할까요?`,
+            buttons: [
+                {
+                    text: '아뇨',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        // this.dismiss();
+                    }
+                }, {
+                    text: '예',
+                    handler: () => {
+                        this.unSubscribeService();
+                        this.dismiss();
+                    }
+                }
+            ]
+        });
+
+        await alert.present();
     }
 }

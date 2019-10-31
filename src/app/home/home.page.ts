@@ -39,7 +39,7 @@ export class HomePage implements OnDestroy{
             iconName: 'N',
             name: '넷플릭스',
             startDate: '20191027',
-            subscribeModel: 'Family',
+            subscribeModel: 'Netflix Family',
             endDate: null,
             leftDate: null,
             leftPercent: 0

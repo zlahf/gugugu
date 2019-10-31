@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      <div (click)="dismiss()"><</div>
-    </ion-title>
+      <div class="close-btn"><ion-icon name="close" size="large" (click)="dismiss()"></ion-icon></div>
   </ion-toolbar>
 </ion-header>
 
@@ -56,7 +54,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <div class="gugu-custom-card bg-dark" (click)="unSubscribeService()">
+    <div class="gugu-custom-card bg-dark" (click)="presentAlertConfirm(service)">
       <div>
         <div class="text-align-center">구독해지</div>
       </div>
